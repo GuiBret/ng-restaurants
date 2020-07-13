@@ -1,0 +1,9 @@
+:host {
+    flex:0.2;
+    max-height:70vh;
+    overflow-y:scroll;
+}
+
+mat-selection-list {
+    max-height:100%;
+}

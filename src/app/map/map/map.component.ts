@@ -27,7 +27,7 @@ export class MapComponent implements OnInit {
   }
  
   handleMapCoordsChanged(coords: [number, number]) {
-    console.log('Cords cha')
+    
     this.mapCenter = latLng(coords[0], coords[1]);
   }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from '../list.service';
+import { RestaurantListItem } from 'src/app/interfaces/restaurant-list-item';
+import { RestaurantList } from 'src/app/interfaces/restaurant-list';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
-
+  restaurantsList: RestaurantList;
+  constructor(private listSvc: ListService) { }
+  
   ngOnInit(): void {
+
+    this.listSvc.newRestaurantsList.subscribe((newList: RestaurantList) => {
+      
+      this.restaurantsList = newList;
+    })
   }
 
 }
