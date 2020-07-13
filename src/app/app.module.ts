@@ -7,6 +7,7 @@ import { MapComponent } from './map/map/map.component';
 import { SearchComponent } from './search/search/search.component';
 import { ListComponent } from './list/list/list.component';
 import { ListElementComponent } from './list/list-element/list-element.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ListElementComponent } from './list/list-element/list-element.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
