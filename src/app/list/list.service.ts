@@ -9,6 +9,7 @@ import { StandardResponse } from '../interfaces/standard-response';
 export class ListService {
 
   newRestaurantsList = new Subject();
+  newMarkersReceived = new Subject();
   constructor(private httpService: HTTPService) { }
 
   initList(position: LatLng) {
@@ -18,5 +19,6 @@ export class ListService {
 
   handleNewRestaurantsList(response: any) {
     this.newRestaurantsList.next(response.data.businesses);
+    this.newMarkersReceived.next(response.data.businesses.map((currBusiness) => [currBusiness.latitude, currBusiness.longitude]));
   }
 }

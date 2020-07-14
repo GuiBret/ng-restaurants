@@ -1,1 +1,5 @@
-<div leaflet style="height: 70vh;" [leafletOptions]="options" [(leafletCenter)]="mapCenter"></div>
+<div leaflet style="height: 70vh;" 
+     [leafletOptions]="options"
+     [(leafletCenter)]="mapCenter"
+     [leafletLayers]="layers"
+     (leafletMapMoveEnd)="handleMapMoved()"></div>

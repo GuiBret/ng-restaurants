@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { tileLayer, latLng } from 'leaflet';
+import { tileLayer, latLng, marker, icon } from 'leaflet';
 import { MapService } from '../map.service';
+import { ListService } from 'src/app/list/list.service';
 
 @Component({
   selector: 'app-map',
@@ -9,10 +10,16 @@ import { MapService } from '../map.service';
 })
 export class MapComponent implements OnInit {
   options: any;
-  mapCenter: [number, number];
-  constructor(private mapSvc: MapService) { }
+  mapCenter: {lat: number, lng: number};
+  layers: Array<any> = [];
+
+  operationRunning = false;
+  constructor(private mapSvc: MapService, private listSvc: ListService) {
+    this.layers = [];
+   }
 
   ngOnInit(): void {
+    
     this.options = {
       layers: [
         tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
@@ -24,11 +31,41 @@ export class MapComponent implements OnInit {
     this.mapCenter = latLng(46.879966, -121.726909);
     
     this.mapSvc.coordsToDisplayChanged.subscribe(this.handleMapCoordsChanged.bind(this));
+    this.listSvc.newMarkersReceived.subscribe(this.handleNewMarkers.bind(this));
   }
  
   handleMapCoordsChanged(coords: [number, number]) {
     
     this.mapCenter = latLng(coords[0], coords[1]);
+  }
+
+  handleNewMarkers(markers: Array<any>) {
+    this.layers = markers.map((currMarker) => marker([currMarker[0], currMarker[1], {
+      icon: icon({
+        iconSize: [ 25, 41 ],
+        iconAnchor: [ 25, 41 ],
+        iconUrl: 'assets/marker-icon.png',
+        shadowUrl: 'assets/marker-shadow.png'
+      })
+    }]));
+
+    this.operationRunning = false;
+  }
+
+  /**
+   * 
+   * @param $event 
+   */
+  handleMapMoved() {
+    if(!this.operationRunning) {
+      this.operationRunning = true;
+      
+      this.listSvc.initList({latitude: this.mapCenter.lat, longitude: this.mapCenter.lng});
+      this.operationRunning = false;
+      // let newPosition = $event.target.animateToCenter;
+      // console.log($event);
+    }
+    
   }
 
 

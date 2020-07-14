@@ -87,6 +87,11 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "**/*",
+			          "input": "./node_modules/leaflet/dist/images",
+			          "output": "assets/"
+              },
               "src/assets"
             ],
             "styles": [
