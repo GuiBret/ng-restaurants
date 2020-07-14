@@ -13,11 +13,16 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchString = '';
+    this.pageSvc.changeTextInSearchInputField.subscribe(this.changeText.bind(this));
   }
 
   makeGeocodingCall() {
-    console.log(this.searchString)
+    
     this.pageSvc.makeGeocodingSearch(encodeURI(this.searchString));
+  }
+
+  changeText(newText: string) {
+    this.searchString = newText;
   }
 
 }

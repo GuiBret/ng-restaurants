@@ -9,6 +9,9 @@ import { Subject } from 'rxjs';
 })
 export class PageService {
   coordsToDisplayChanged = new Subject();
+  changeTextInSearchInputField = new Subject();
+
+  
   constructor(private mapSvc: MapService, private listSvc: ListService, private httpSvc: HTTPService) { }
 
   makeGeocodingSearch(searchString: string) {
@@ -22,6 +25,7 @@ export class PageService {
     } else {
       const resultKept = response.data.results[0];
       this.coordsToDisplayChanged.next([resultKept.latitude, resultKept.longitude]);
+      this.changeTextInSearchInputField.next(resultKept.name);
     }
   }
 }
