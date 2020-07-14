@@ -1,5 +1,4 @@
-<mat-form-field class="form-input">
-    
-    <input matInput type='search' placeholder="Recherchez votre position">
-    <button mat-raised-button color="primary">Rechercher</button>
-</mat-form-field>
+<div class="form-input">
+    <input matInput type='search' placeholder="Recherchez votre position" [(ngModel)]="searchString">
+    <button mat-raised-button color="primary" (click)="makeGeocodingCall()">Rechercher</button>
+</div> 

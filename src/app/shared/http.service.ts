@@ -10,11 +10,29 @@ export class HTTPService {
   constructor(private http: HttpClient) { }
 
   getRestaurantsFromPosition(latLng: LatLng) {
-    let httpOptions = {
+    const httpOptions = {
+      headers: {
+        "Access-Control-Allow-Origin": '*'
+      } 
+    };
+
+    const searchParams = {
+      latitude: latLng.latitude.toString(),
+      longitude: latLng.longitude.toString()
+    };
+    
+    return this.http.get(environment.serverUrl + '/restaurants?' + new URLSearchParams(searchParams).toString());
+  }
+
+  getGeocoding(searchString: string) {
+    const httpOptions = {
       headers: {
         "Access-Control-Allow-Origin": '*'
       }
-    }
-    return this.http.get(environment.serverUrl + '/restaurants?latitude=' + latLng.latitude +'&longitude='+ latLng.longitude, httpOptions);
+    };
+
+    return this.http.get(environment.serverUrl + '/geocoding?q=' + searchString, httpOptions); 
   }
+
+  
 }
