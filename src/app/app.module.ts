@@ -17,7 +17,8 @@ import { MapService } from './map/map.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     FormsModule,
     MatExpansionModule,
+    MatTableModule,
     MatIconModule
   ],
   providers: [MapService],
