@@ -3,6 +3,7 @@ export interface RestaurantListItem {
     latitude: string;
     longitude: string;
     id: string;
-    image_url: string;
+    image: string;
     address: string;
+    distance: string;
 }

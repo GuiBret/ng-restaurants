@@ -1,5 +1,3 @@
-<mat-selection-list>
-    <mat-list-item *ngFor="let restaurant of restaurantsList">
-        {{restaurant.name}}
-    </mat-list-item>
-</mat-selection-list>
+<mat-accordion *ngFor="let restaurant of restaurantsList">
+    <app-restaurant-item [restaurant]='restaurant'></app-restaurant-item>
+</mat-accordion>

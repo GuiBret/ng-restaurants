@@ -6,4 +6,5 @@
 
 mat-selection-list {
     max-height:100%;
+    padding-left: 2vw;
 }

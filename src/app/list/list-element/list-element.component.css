@@ -1,0 +1,54 @@
+/* :root {
+    min-height:10vh;
+}
+
+.img-panel {
+    width:30%;
+}
+
+.img-panel > img {
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    width: 5vw;
+    
+}
+
+mat-icon {
+    vertical-align: text-bottom;
+    font-size:20px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+.txt-distance {
+    color:gray;
+    font-size: 0.85rem;
+}
+
+
+
+.align-center {
+    align-items: center;
+} */
+
+img {
+    height:8vh;
+}
+
+mat-icon {
+    vertical-align: text-bottom;
+    font-size:20px;
+}
+
+.txt-distance {
+    color:gray;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.distance-container {
+    display:flex;
+    align-items: center;
+}

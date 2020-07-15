@@ -1,1 +1,20 @@
-<p>list-element works!</p>
+<mat-expansion-panel >
+    <mat-expansion-panel-header [collapsedHeight]="'5vh'" [expandedHeight]="'10vh'" >
+        <div class="flex-row space-between" style="width: 85%">
+            
+                <h3>{{restaurant.name}}</h3>
+                <div class='distance-container'>
+                    <mat-icon style='text-align:center;'>gps_not_fixed</mat-icon><span class='txt-distance'>{{restaurant.distance}} m</span>
+                </div>
+
+            
+        </div>
+    </mat-expansion-panel-header>
+
+    <div class='img-panel' style='width:30%;'>
+        <img [src]="restaurant.image">
+    </div>
+
+</mat-expansion-panel>
+    
+
