@@ -34,5 +34,9 @@ export class HTTPService {
     return this.http.get(environment.serverUrl + '/geocoding?q=' + searchString, httpOptions); 
   }
 
+  makeSuggestionsSearch(searchStr: string) {
+    return this.http.get(environment.serverUrl + '/autocomplete?q=' + searchStr);
+  }
+
   
 }

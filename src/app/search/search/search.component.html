@@ -1,4 +1,7 @@
 <div class="form-input">
-    <input matInput type='search' placeholder="Recherchez votre position" [(ngModel)]="searchString">
+    <input matInput type='search' placeholder="Recherchez votre position" [(ngModel)]="searchString" (keyup)="makeSuggestionsSearch()" [formControl]="searchCtrl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+    </mat-autocomplete>
     <button mat-raised-button color="primary" (click)="makeGeocodingCall()">Rechercher</button>
 </div> 
