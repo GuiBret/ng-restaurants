@@ -3,6 +3,7 @@ import { MapService } from '../map/map.service';
 import { ListService } from '../list/list.service';
 import { HTTPService } from './http.service';
 import { Subject } from 'rxjs';
+import { LatLng } from '../interfaces/lat-lng';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class PageService {
       this.coordsToDisplayChanged.next([resultKept.latitude, resultKept.longitude]);
       this.changeTextInSearchInputField.next(resultKept.name);
     }
+  }
+
+  goToRestaurant(position: LatLng) {
+    this.coordsToDisplayChanged.next([position.latitude, position.longitude]);
   }
 }
