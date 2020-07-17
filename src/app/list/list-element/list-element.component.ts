@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RestaurantListItem } from 'src/app/interfaces/restaurant-list-item';
+import { PageService } from 'src/app/shared/page.service';
 
 @Component({
   selector: 'app-restaurant-item',
@@ -9,9 +10,13 @@ import { RestaurantListItem } from 'src/app/interfaces/restaurant-list-item';
 export class ListElementComponent implements OnInit {
 
   @Input() restaurant: RestaurantListItem;
-  constructor() { }
+  constructor(private pageSvc: PageService) { }
 
   ngOnInit(): void {
+  }
+
+  goToRestaurant() {
+    this.pageSvc.goToRestaurant({latitude: parseFloat(this.restaurant.latitude), longitude: parseFloat(this.restaurant.longitude)});
   }
 
 }
